@@ -92,8 +92,13 @@ Each EP links **down** to the existing bottom-up LLM Master chapters for "go dee
 ## 9. Status log (append-only; newest at bottom)
 - 2026-06-21 — Plan created. Stack & roadmap fixed.
 - 2026-06-21 — MuseWork project "Top-Down LLM" created (id `cmqnqubrz07wtp301j2umeja9`);
-  populated 6 requirements + 5 plan milestones (M0–M4) + EP0 task. M0 IN_PROGRESS (5%).
-  NEXT: scaffold `topdown-llm` repo (Next.js + Claude) + EP0 working chat → confirm local run.
+  populated 6 requirements + 5 plan milestones (M0–M4) + EP0 task. M0 IN_PROGRESS.
+- 2026-06-21 — **EP0 DONE (app).** Repo scaffolded (Next.js 16 + Claude `claude-sonnet-4-6`),
+  working chat verified live (KO+EN reply, /api/chat 200). 2 commits (f7a52b3, a2cc558).
+  Multi-angle review run (tech=SHIP, translation=edits-applied, pedagogy=improvements-applied).
+  EP0 bilingual script v2 at `docs/EP0-script.md`. Key server-side only, `.env.local` uncommitted.
+  NEXT (EP0 video): pick EN ElevenLabs voice → produce EP0 short (EN+KO, result-first ~80s) →
+  verify → deliver. THEN push repo to GitHub (public) when user approves.
 
 ## 10. Open decisions / TODO
 - [ ] EN narration voice (ElevenLabs) — pick + lock.
