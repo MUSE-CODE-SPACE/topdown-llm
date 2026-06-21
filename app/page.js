@@ -21,7 +21,8 @@ export default function Home() {
         body: JSON.stringify({ messages: next }),
       });
       const data = await res.json();
-      setMessages([...next, { role: "assistant", content: data.text ?? `⚠️ ${data.error}` }]);
+      const reply = data.text ?? `⚠️ ${data.error ?? "Something went wrong"}`;
+      setMessages([...next, { role: "assistant", content: reply }]);
     } catch (e) {
       setMessages([...next, { role: "assistant", content: "⚠️ Network error" }]);
     } finally {

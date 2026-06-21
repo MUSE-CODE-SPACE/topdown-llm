@@ -9,6 +9,12 @@ const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from the environme
 
 export async function POST(req) {
   try {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      return Response.json(
+        { error: "No API key yet. Add ANTHROPIC_API_KEY to .env.local (see README), then restart." },
+        { status: 500 }
+      );
+    }
     const { messages } = await req.json(); // [{ role: "user"|"assistant", content: "..." }]
 
     const reply = await anthropic.messages.create({
