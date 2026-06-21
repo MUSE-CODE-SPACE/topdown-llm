@@ -28,6 +28,23 @@ Beginner-friendly. One episode = one real feature = one commit.
 | 9 | "Share it" | deploy |
 | 10 | Capstone + recap | put it together |
 
+## 📋 Don't retype — copy the code / 코드는 외우지 말고 복사하세요
+Beginners: you never have to type long code by hand. Each episode's exact files live here —
+open them and hit the **Copy** button (top-right of each file on GitHub).
+초보자분들 — 긴 코드를 손으로 칠 필요 없어요. 매 에피소드의 *진짜* 파일이 여기 있으니
+열어서 우측 상단 **Copy** 버튼만 누르세요.
+
+**EP0 files / EP0 파일 (copy these 2):**
+- 🧠 brain / 두뇌 → [`app/api/chat/route.js`](app/api/chat/route.js)
+- 💬 face / 얼굴 → [`app/page.js`](app/page.js)
+- 🎨 styles / 꾸미기 → [`app/globals.css`](app/globals.css)
+- 🔑 your key / 내 키 → make `.env.local`, copy from [`.env.example`](.env.example)
+
+Or just clone the whole thing / 통째로 받으려면:
+```bash
+git clone https://github.com/yoon-k/topdown-llm.git
+```
+
 ## Run EP0 / EP0 실행
 ```bash
 npm install

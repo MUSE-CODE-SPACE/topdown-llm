@@ -102,8 +102,13 @@ Each EP links **down** to the existing bottom-up LLM Master chapters for "go dee
   emotional Scene 7, "developers befriend errors", stronger CTA, expanded yesterday-you ending.
   Voices LOCKED (EN Jessica / KO JY). Identity = confidence episode. Multi-angle reviewed
   (tech SHIP, translation/pedagogy edits applied incl. reproducibility blockers fixed).
-  NEXT: produce EP0 video (record build in Cursor OR HyperFrames cut) EN+KO + captions →
-  verify → deliver. THEN push repo to GitHub (public) when user approves.
+- 2026-06-21 — **EP0 KO VIDEO DONE & delivered** (3:23, 1080p). 100% real footage:
+  real Muse-talks browser clip, real route.js/page.js code screens, real terminal,
+  real friendly-error screen (captured via key-rename trick, .env.local restored).
+  Narration JY. Assets in video-agentic-roadmap/renders/tdl-ep0/ (scripts: build-ep0-vo/
+  screens/compose, gen-ep0-srt). KNOWN POLISH: bottom-right callouts (sc5/sc6/sc8) slightly
+  overlap captions → move callouts to top in a re-render.
+  NEXT: (a) callout-position fix, (b) EN cut (Jessica) same pipeline, (c) push repo public when approved.
 
 ## 10. Open decisions / TODO
 - [x] Voices locked: EN=Jessica, KO=JY trendy (2026-06-21).
