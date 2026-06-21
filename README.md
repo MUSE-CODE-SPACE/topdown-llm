@@ -42,7 +42,7 @@ open them and hit the **Copy** button (top-right of each file on GitHub).
 
 Or just clone the whole thing / 통째로 받으려면:
 ```bash
-git clone https://github.com/yoon-k/topdown-llm.git
+git clone https://github.com/MUSE-CODE-SPACE/topdown-llm.git
 ```
 
 ## Run EP0 / EP0 실행
