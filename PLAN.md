@@ -28,7 +28,7 @@ Twist (Gabriel): use AI to **understand, not to skip** — read every line.
 
 ## 3. Audience & language
 - Global, beginner-friendly. **English-first** content (universal).
-- **Korean parallel** (dual subtitles EN+KO; KO voice = Jiyoung, EN voice = TBD ElevenLabs).
+- **Korean parallel** (dual subtitles EN+KO). **Voices LOCKED: EN = Jessica (ElevenLabs cgSgspJ2msm6clMCkdW9), KO = JY trendy (bQlkYuipD5BHEhntA5iz).**
 - **Code & UI in English** (universal). Comments minimal, plain.
 
 🇰🇷 해외 누구나. 영어 우선·한국어 병기. 코드/UI는 영어.
@@ -97,11 +97,16 @@ Each EP links **down** to the existing bottom-up LLM Master chapters for "go dee
   working chat verified live (KO+EN reply, /api/chat 200). 2 commits (f7a52b3, a2cc558).
   Multi-angle review run (tech=SHIP, translation=edits-applied, pedagogy=improvements-applied).
   EP0 bilingual script v2 at `docs/EP0-script.md`. Key server-side only, `.env.local` uncommitted.
-  NEXT (EP0 video): pick EN ElevenLabs voice → produce EP0 short (EN+KO, result-first ~80s) →
+- 2026-06-21 — EP0 COURSE script v3 done (full build-along, ~9min). User feedback applied:
+  "you build it" cold open, AI-product ladder, relatable API-key + "private room"=server,
+  emotional Scene 7, "developers befriend errors", stronger CTA, expanded yesterday-you ending.
+  Voices LOCKED (EN Jessica / KO JY). Identity = confidence episode. Multi-angle reviewed
+  (tech SHIP, translation/pedagogy edits applied incl. reproducibility blockers fixed).
+  NEXT: produce EP0 video (record build in Cursor OR HyperFrames cut) EN+KO + captions →
   verify → deliver. THEN push repo to GitHub (public) when user approves.
 
 ## 10. Open decisions / TODO
-- [ ] EN narration voice (ElevenLabs) — pick + lock.
+- [x] Voices locked: EN=Jessica, KO=JY trendy (2026-06-21).
 - [ ] Longform vs shorts per EP (likely: 1 longform build-along + 1 short teaser each).
 - [ ] Series landing page (resonance-space?) for global discovery.
 - [x] MuseWork project id: `cmqnqubrz07wtp301j2umeja9` (name "Top-Down LLM"). Requirements×6, Plan M0–M4, EP0 task queued (2026-06-21).
