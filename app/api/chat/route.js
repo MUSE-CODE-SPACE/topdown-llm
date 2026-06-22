@@ -56,6 +56,18 @@ function runCalc(expression) {
   catch { return "could not calculate"; }
 }
 
+// EP5 — a 2nd tool. With more than one tool, Muse can chain steps by itself = an agent.
+tools.push({
+  name: "today",
+  description: "Get today's date as YYYY-MM-DD.",
+  input_schema: { type: "object", properties: {}, required: [] },
+});
+function runTool(call) {
+  if (call.name === "calc") return runCalc(call.input.expression);
+  if (call.name === "today") return new Date().toISOString().slice(0, 10);
+  return "unknown tool";
+}
+
 export async function POST(req) {
   try {
     if (!process.env.ANTHROPIC_API_KEY) {
@@ -88,7 +100,7 @@ export async function POST(req) {
 
     while (reply.stop_reason === "tool_use") {
       const call = reply.content.find((b) => b.type === "tool_use");
-      const result = call.name === "calc" ? runCalc(call.input.expression) : "unknown tool";
+      const result = runTool(call); // EP5 — any of our tools
       convo.push({ role: "assistant", content: reply.content });
       convo.push({ role: "user", content: [{ type: "tool_result", tool_use_id: call.id, content: result }] });
       reply = await anthropic.messages.create({
