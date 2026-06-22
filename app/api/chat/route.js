@@ -36,6 +36,19 @@ const MUSE_PERSONA =
   "Keep replies short and focused: 2 to 4 sentences, simple words, one friendly emoji. " +
   "If a question is vague, ask one quick clarifying question instead of guessing.";
 
+// EP6 — guardrail #1: tell the AI what it must NOT do.
+const SAFETY =
+  "\n\nSafety rules (always follow): never help with harmful, illegal, or destructive " +
+  "actions (e.g. deleting files, hacking, weapons), and never run unsafe code. " +
+  "If asked, kindly refuse in one sentence and offer a safe alternative.";
+
+// EP6 — guardrail #2: check the user's input before we even call the AI.
+function guardInput(text) {
+  if (!text || !text.trim()) return "메시지를 입력해 주세요 🙂";
+  if (text.length > 2000) return "메시지가 너무 길어요. 조금 줄여서 다시 보내주실래요? 🙏";
+  return null; // ok
+}
+
 // EP3 — a tool Muse can actually call. (LLMs guess at math; a tool does it exactly.)
 const tools = [
   {
@@ -80,6 +93,10 @@ export async function POST(req) {
 
     // EP2 — RAG: find relevant notes, then add them to the system so Muse can use them.
     const lastUser = messages[messages.length - 1]?.content ?? "";
+
+    // EP6 — stop bad/empty input before it reaches the model.
+    const blocked = guardInput(lastUser);
+    if (blocked) return Response.json({ text: blocked });
     const found = retrieve(lastUser, NOTES);
     const context = found.length ? `\n\nWhat you know about the user:\n- ${found.join("\n- ")}` : "";
 
@@ -93,7 +110,7 @@ export async function POST(req) {
     let reply = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 1024,
-      system: MUSE_PERSONA + context + memText,
+      system: MUSE_PERSONA + SAFETY + context + memText,
       tools,
       messages: convo,
     });
@@ -106,7 +123,7 @@ export async function POST(req) {
       reply = await anthropic.messages.create({
         model: "claude-sonnet-4-6",
         max_tokens: 1024,
-        system: MUSE_PERSONA + context + memText,
+        system: MUSE_PERSONA + SAFETY + context + memText,
         tools,
         messages: convo,
       });
