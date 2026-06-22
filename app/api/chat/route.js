@@ -86,6 +86,14 @@ function pickModel(text) {
   return text.trim().length < 30 ? "claude-haiku-4-5-20251001" : "claude-sonnet-4-6";
 }
 
+// EP10 — Muse's signature: the Top-Down Tutor. If you want to learn, it teaches the way you built it.
+function tutorMode(text) {
+  if (!/가르쳐|배우고 싶|공부|어떻게 시작|배우려/.test(text)) return "";
+  return "\n\nTutor mode (top-down): start with one tiny doable project, not theory. " +
+    "Explain only what's needed right now, in plain words a beginner gets. " +
+    "End by asking the learner to say it back in their own words. Compare them only to yesterday's self.";
+}
+
 export async function POST(req) {
   try {
     if (!process.env.ANTHROPIC_API_KEY) {
@@ -115,7 +123,7 @@ export async function POST(req) {
     // EP8 — pick a model by size, and CACHE the stable instructions (cheaper + faster on repeat).
     const model = pickModel(lastUser);
     const system = [
-      { type: "text", text: MUSE_PERSONA + SAFETY, cache_control: { type: "ephemeral" } }, // stable → cached
+      { type: "text", text: MUSE_PERSONA + SAFETY + tutorMode(lastUser), cache_control: { type: "ephemeral" } }, // + EP10 tutor
       { type: "text", text: context + memText },                                            // changes each time
     ];
     let reply = await anthropic.messages.create({
