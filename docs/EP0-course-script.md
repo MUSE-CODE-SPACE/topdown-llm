@@ -8,6 +8,10 @@ EN narration = **Jessica** · KO narration = **JY (trendy)** · dual subtitles.
 Legend: 🎙️ narration · 🖥️ on screen · ⌨️ typed/shown · 💬 host aside · 🎵 music cue
 
 > Honest framing: **we write two tiny files; the starter project provides the rest.**
+> ⚠️ AUDIENCE = absolute beginners. **Never make them retype long code.** Whenever a file
+> appears (route.js, page.js, globals.css), the narration MUST say: "외우지 마세요 —
+> 설명란/깃허브 링크에서 그대로 복사하세요" while we read & explain it. Repo (copy source):
+> https://github.com/MUSE-CODE-SPACE/topdown-llm
 
 ---
 
