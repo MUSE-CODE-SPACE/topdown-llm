@@ -122,7 +122,13 @@ Each EP links **down** to the existing bottom-up LLM Master chapters for "go dee
   Longform = soft subs (no burn). Pipeline scripts: build-ep0-vo/screens/term(-synced)/code/v4 + subs.
   ⚠️ Recording gotcha: key-rename trick for error clip — ALWAYS restore .env.local synchronously
   (bg runs got cut twice, key had to be restored from .bak). Key currently OK.
-  NEXT: EP1 ("give Muse a personality, ~1 line") in same format; EN(Jessica) cut when intl matters.
+- 2026-06-22 — **EP1 DONE** ("Muse에게 성격 한 줄"). App: MUSE_PERSONA system prompt (commit 12eb66d,
+  pushed). Video (KO clean ~1:19): line-by-line route.js persona walkthrough + skip hint ON-SCREEN
+  AND in caption ("코드 설명 — 익숙하면 0:47로 건너뛰기"), real before(EP0 talk)/after(vague→clarify)
+  clips, soft subs (ep1.ko.srt). EP0 thumb LOCKED = B1 "딱 두 파일로" (no exaggeration; series template).
+  Upload-text packs (title/desc/tags/pinned/chapters) delivered for EP0 & EP1. Build script build-ep1.mjs.
+  ⚠️ "30분" type time claims removed (inaccurate). NEW REQ for all eps: skip-time shown in BOTH overlay+caption.
+  NEXT: EP2 (RAG — "Muse가 내 노트로 답하게") same format; EN(Jessica) cut when intl matters.
 
 ## 10. Open decisions / TODO
 - [x] Voices locked: EN=Jessica, KO=JY trendy (2026-06-21).
