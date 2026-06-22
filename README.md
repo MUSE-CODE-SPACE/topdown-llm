@@ -41,9 +41,10 @@ Every episode is one commit on `main`, **tagged** so you can grab that exact poi
 | EP4 | [tree/ep4](https://github.com/MUSE-CODE-SPACE/topdown-llm/tree/ep4) | `git checkout ep4` | [EP4-handout](resources/EP4-handout.md) |
 | EP5 | [tree/ep5](https://github.com/MUSE-CODE-SPACE/topdown-llm/tree/ep5) | `git checkout ep5` | [EP5-handout](resources/EP5-handout.md) |
 | EP6 | [tree/ep6](https://github.com/MUSE-CODE-SPACE/topdown-llm/tree/ep6) | `git checkout ep6` | [EP6-handout](resources/EP6-handout.md) |
+| EP7 | [tree/ep7](https://github.com/MUSE-CODE-SPACE/topdown-llm/tree/ep7) | `git checkout ep7` | [EP7-handout](resources/EP7-handout.md) |
 
 **Git이 어렵다면** — 각 편 전체 코드가 폴더로도 있어요(다운로드/복사만 하면 끝):
-[episodes/ep0](episodes/ep0) · [ep1](episodes/ep1) · [ep2](episodes/ep2) · [ep3](episodes/ep3) · [ep4](episodes/ep4) · [ep5](episodes/ep5) · [ep6](episodes/ep6)
+[episodes/ep0](episodes/ep0) · [ep1](episodes/ep1) · [ep2](episodes/ep2) · [ep3](episodes/ep3) · [ep4](episodes/ep4) · [ep5](episodes/ep5) · [ep6](episodes/ep6) · [ep7](episodes/ep7)
 
 `main` is always the latest episode. / `main`은 항상 최신 편.
 
