@@ -4,8 +4,20 @@
 // only when the project hits a wall. That's top-down.
 
 import Anthropic from "@anthropic-ai/sdk";
+import { NOTES } from "../../notes"; // EP2 — your notes
 
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
+
+// EP2 — the tiny "retrieve" step of RAG: find the notes most related to the question.
+function retrieve(query, notes, k = 2) {
+  const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+  return notes
+    .map((note) => ({ note, hits: words.filter((w) => note.toLowerCase().includes(w)).length }))
+    .filter((x) => x.hits > 0)
+    .sort((a, b) => b.hits - a.hits)
+    .slice(0, k)
+    .map((x) => x.note);
+}
 
 // EP1 — Muse's personality lives here. Change these lines, change who Muse is.
 const MUSE_PERSONA =
@@ -23,10 +35,15 @@ export async function POST(req) {
     }
     const { messages } = await req.json(); // [{ role: "user"|"assistant", content: "..." }]
 
+    // EP2 — RAG: find relevant notes, then add them to the system so Muse can use them.
+    const lastUser = messages[messages.length - 1]?.content ?? "";
+    const found = retrieve(lastUser, NOTES);
+    const context = found.length ? `\n\nWhat you know about the user:\n- ${found.join("\n- ")}` : "";
+
     const reply = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 1024,
-      system: MUSE_PERSONA,
+      system: MUSE_PERSONA + context,
       messages,
     });
 
