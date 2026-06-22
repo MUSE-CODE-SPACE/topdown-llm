@@ -115,7 +115,14 @@ Each EP links **down** to the existing bottom-up LLM Master chapters for "go dee
   (no caption overlap). Repo PUBLIC: https://github.com/MUSE-CODE-SPACE/topdown-llm (handout +
   ko/en captions in resources/). Longform = soft subs (ko.srt now; en.srt ready for intl auto-translate later;
   intl not a priority yet). Delivered clean ep0v3-base.mp4 + ep0.ko.srt. Burned ver also exists (ep0-ko-v3.mp4).
-  NEXT: EP1 ("give Muse a personality, ~1 line"); EN(Jessica) audio cut later when intl matters.
+- 2026-06-22 — **EP0 v4 finalized** (KO clean longform ~4:35 + ep0.ko.srt). Added: route.js & page.js
+  LINE-BY-LINE walkthroughs (per-line highlight) with "skip to 3:09" hint (absolute time). Hid Next.js
+  dev indicator (next.config devIndicators:false) + re-recorded clean talk/error clips (no "N").
+  Ending reworded per user: dropped "개발자의 승리"; now "오늘은 작은 AI 에이전트가 만들어졌어요".
+  Longform = soft subs (no burn). Pipeline scripts: build-ep0-vo/screens/term(-synced)/code/v4 + subs.
+  ⚠️ Recording gotcha: key-rename trick for error clip — ALWAYS restore .env.local synchronously
+  (bg runs got cut twice, key had to be restored from .bak). Key currently OK.
+  NEXT: EP1 ("give Muse a personality, ~1 line") in same format; EN(Jessica) cut when intl matters.
 
 ## 10. Open decisions / TODO
 - [x] Voices locked: EN=Jessica, KO=JY trendy (2026-06-21).
