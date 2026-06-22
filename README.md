@@ -28,6 +28,17 @@ Beginner-friendly. One episode = one real feature = one commit.
 | 9 | "Share it" | deploy |
 | 10 | Capstone + recap | put it together |
 
+## 📦 Each episode's code / 에피소드별 코드
+Every episode is one commit on `main`, **tagged** so you can grab that exact point.
+각 에피소드는 `main`의 커밋 하나이고, **태그**로 그 시점 코드를 받을 수 있어요.
+
+| EP | Browse / 보기 | Git | Handout (copy) |
+|----|---------------|-----|----------------|
+| EP0 | [tree/ep0](https://github.com/MUSE-CODE-SPACE/topdown-llm/tree/ep0) | `git checkout ep0` | [EP0-handout](resources/EP0-handout.md) |
+| EP1 | [tree/ep1](https://github.com/MUSE-CODE-SPACE/topdown-llm/tree/ep1) | `git checkout ep1` | [EP1-handout](resources/EP1-handout.md) |
+
+`main` is always the latest episode. / `main`은 항상 최신 편.
+
 ## 📋 Don't retype — copy the code / 코드는 외우지 말고 복사하세요
 Beginners: you never have to type long code by hand. Each episode's exact files live here —
 open them and hit the **Copy** button (top-right of each file on GitHub).
