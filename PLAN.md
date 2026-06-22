@@ -135,3 +135,8 @@ Each EP links **down** to the existing bottom-up LLM Master chapters for "go dee
 - [ ] Longform vs shorts per EP (likely: 1 longform build-along + 1 short teaser each).
 - [ ] Series landing page (resonance-space?) for global discovery.
 - [x] MuseWork project id: `cmqnqubrz07wtp301j2umeja9` (name "Top-Down LLM"). Requirements×6, Plan M0–M4, EP0 task queued (2026-06-21).
+- 2026-06-22 — EP2 DONE (RAG/래그). App: app/notes.js + retrieve()+inject in route.js (commit, tag ep2,
+  EP2-handout, README table). Video (KO clean ~1:45, build-ep2-rich.mjs): demystify(검색+생성), detailed
+  line-by-line (notes.js→retrieve→inject) + skip(overlay+caption 1:10), real RAG clips (notes answer /
+  before no-notes / keyword-miss limitation → embeddings teaser), thumbnail + upload texts delivered.
+  Clips via direct-Claude+inject render (build-ep2-clips.mjs). NEXT: EP3 (tools — calc/search/act).
