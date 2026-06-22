@@ -81,6 +81,11 @@ function runTool(call) {
   return "unknown tool";
 }
 
+// EP8 — speed & cost: small question → small, cheap, fast model; otherwise the strong one.
+function pickModel(text) {
+  return text.trim().length < 30 ? "claude-haiku-4-5-20251001" : "claude-sonnet-4-6";
+}
+
 export async function POST(req) {
   try {
     if (!process.env.ANTHROPIC_API_KEY) {
@@ -107,10 +112,16 @@ export async function POST(req) {
 
     // EP3 — tool-use loop: let Muse call a tool, run it, hand the result back, repeat.
     const convo = [...messages];
+    // EP8 — pick a model by size, and CACHE the stable instructions (cheaper + faster on repeat).
+    const model = pickModel(lastUser);
+    const system = [
+      { type: "text", text: MUSE_PERSONA + SAFETY, cache_control: { type: "ephemeral" } }, // stable → cached
+      { type: "text", text: context + memText },                                            // changes each time
+    ];
     let reply = await anthropic.messages.create({
-      model: "claude-sonnet-4-6",
+      model,
       max_tokens: 1024,
-      system: MUSE_PERSONA + SAFETY + context + memText,
+      system,
       tools,
       messages: convo,
     });
@@ -121,9 +132,9 @@ export async function POST(req) {
       convo.push({ role: "assistant", content: reply.content });
       convo.push({ role: "user", content: [{ type: "tool_result", tool_use_id: call.id, content: result }] });
       reply = await anthropic.messages.create({
-        model: "claude-sonnet-4-6",
+        model,
         max_tokens: 1024,
-        system: MUSE_PERSONA + SAFETY + context + memText,
+        system,
         tools,
         messages: convo,
       });
