@@ -140,3 +140,8 @@ Each EP links **down** to the existing bottom-up LLM Master chapters for "go dee
   line-by-line (notes.js→retrieve→inject) + skip(overlay+caption 1:10), real RAG clips (notes answer /
   before no-notes / keyword-miss limitation → embeddings teaser), thumbnail + upload texts delivered.
   Clips via direct-Claude+inject render (build-ep2-clips.mjs). NEXT: EP3 (tools — calc/search/act).
+- 2026-06-22 — EP3 DONE (Tool Use). App: calc tool + runCalc + tool-use loop in route.js (tag ep3,
+  EP3-handout). NEW: per-episode FULL-CODE folders episodes/ep0..ep3 (git-free download). Video
+  (KO clean ~1:38, build-ep3-rich.mjs): demystify(function calling)+4-step, detailed line-by-line
+  (tool def/runCalc/loop)+skip(1:05 overlay+caption), real clips showing 🔧 calc step + before(guess),
+  expand→agent teaser, thumbnail+upload texts. Clips build-ep3-clips.mjs (tool-step visible). NEXT: EP4 (memory).
