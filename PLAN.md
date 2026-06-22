@@ -108,7 +108,14 @@ Each EP links **down** to the existing bottom-up LLM Master chapters for "go dee
   Narration JY. Assets in video-agentic-roadmap/renders/tdl-ep0/ (scripts: build-ep0-vo/
   screens/compose, gen-ep0-srt). KNOWN POLISH: bottom-right callouts (sc5/sc6/sc8) slightly
   overlap captions → move callouts to top in a re-render.
-  NEXT: (a) callout-position fix, (b) EN cut (Jessica) same pipeline, (c) push repo public when approved.
+- 2026-06-22 — **EP0 v3 (real follow-along) done.** Replaced static setup w/ NARRATION-SYNCED
+  real terminal beats (node→create→cd→install→run, one cmd per VO beat, no racing ahead, pause-hint bar).
+  Real browser clips: Muse-talks + friendly-error (recorded live via key-rename, key restored).
+  Code screens show "don't retype — copy from GitHub" (tab badge + narration). Callouts moved to top
+  (no caption overlap). Repo PUBLIC: https://github.com/MUSE-CODE-SPACE/topdown-llm (handout +
+  ko/en captions in resources/). Longform = soft subs (ko.srt now; en.srt ready for intl auto-translate later;
+  intl not a priority yet). Delivered clean ep0v3-base.mp4 + ep0.ko.srt. Burned ver also exists (ep0-ko-v3.mp4).
+  NEXT: EP1 ("give Muse a personality, ~1 line"); EN(Jessica) audio cut later when intl matters.
 
 ## 10. Open decisions / TODO
 - [x] Voices locked: EN=Jessica, KO=JY trendy (2026-06-21).
