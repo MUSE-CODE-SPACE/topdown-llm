@@ -1,0 +1,304 @@
+1
+00:00:00,000 --> 00:00:02,806
+This little assistant is already talking
+
+2
+00:00:02,806 --> 00:00:05,471
+back to me — in two languages. And the
+
+3
+00:00:05,471 --> 00:00:08,347
+wild part isn't that some AI company made
+
+4
+00:00:08,347 --> 00:00:11,293
+this. You are going to build it today. Two
+
+5
+00:00:11,293 --> 00:00:14,099
+tiny files. Never coded before? Perfect.
+
+6
+00:00:14,099 --> 00:00:14,730
+Let's go.
+
+7
+00:00:15,080 --> 00:00:17,548
+Most courses make you climb a mountain of
+
+8
+00:00:17,548 --> 00:00:19,896
+theory before you build anything. We go
+
+9
+00:00:19,896 --> 00:00:22,365
+the other way — top-down: build something
+
+10
+00:00:22,365 --> 00:00:24,713
+that works first, learn each piece only
+
+11
+00:00:24,713 --> 00:00:26,760
+when the project needs it. You use
+
+12
+00:00:26,760 --> 00:00:29,289
+everything five seconds later, so you stay
+
+13
+00:00:29,289 --> 00:00:29,710
+hooked.
+
+14
+00:00:30,060 --> 00:00:34,242
+Meet Muse, your own AI assistant. Today we
+
+15
+00:00:34,242 --> 00:00:38,424
+build one thing: talking. But almost every
+
+16
+00:00:38,424 --> 00:00:42,208
+AI product starts right here. Talking,
+
+17
+00:00:42,208 --> 00:00:45,793
+then remembering, then using tools —
+
+18
+00:00:45,793 --> 00:00:49,577
+that's an AI agent. Today is step one.
+
+19
+00:00:49,927 --> 00:00:53,082
+First, check that Node is on your
+
+20
+00:00:53,082 --> 00:00:56,811
+computer. If a version shows up, you're
+
+21
+00:00:56,811 --> 00:00:57,385
+ready.
+
+22
+00:00:57,735 --> 00:01:01,301
+Now make the project. One create-next-app
+
+23
+00:01:01,301 --> 00:01:04,955
+command spins up an empty workspace. If it
+
+24
+00:01:04,955 --> 00:01:07,651
+asks questions, just hit Enter.
+
+25
+00:01:08,001 --> 00:01:12,126
+Step into the folder it made — cd, then
+
+26
+00:01:12,126 --> 00:01:13,923
+the project name.
+
+27
+00:01:14,273 --> 00:01:17,199
+Before Muse can think, it borrows a brain
+
+28
+00:01:17,199 --> 00:01:20,125
+— Claude, by Anthropic. For that you need
+
+29
+00:01:20,125 --> 00:01:22,694
+one thing: an API key. Honestly, you
+
+30
+00:01:22,694 --> 00:01:25,477
+wouldn't post your front-door code in a
+
+31
+00:01:25,477 --> 00:01:28,403
+YouTube comment, right? An API key is the
+
+32
+00:01:28,403 --> 00:01:31,115
+same — usage gets billed to you. So we
+
+33
+00:01:31,115 --> 00:01:34,041
+never put it in the code; we keep it in a
+
+34
+00:01:34,041 --> 00:01:36,967
+secret file, guarded like that front-door
+
+35
+00:01:36,967 --> 00:01:37,323
+code.
+
+36
+00:01:37,673 --> 00:01:41,519
+Now the brain. And hey — don't memorize
+
+37
+00:01:41,519 --> 00:01:45,365
+this code, just copy it from the GitHub
+
+38
+00:01:45,365 --> 00:01:49,014
+link. Think of this file as a private
+
+39
+00:01:49,014 --> 00:01:53,155
+room. The API key is only visible in here.
+
+40
+00:01:53,155 --> 00:01:56,903
+Visitors get the answer and leave; the
+
+41
+00:01:56,903 --> 00:02:01,044
+real password never walks out. That's what
+
+42
+00:02:01,044 --> 00:02:02,523
+'server' means.
+
+43
+00:02:02,873 --> 00:02:06,538
+A brain needs a face. No need to retype
+
+44
+00:02:06,538 --> 00:02:10,484
+this either — copy it from GitHub. This is
+
+45
+00:02:10,484 --> 00:02:14,054
+the chat screen: a text box and a Send
+
+46
+00:02:14,054 --> 00:02:18,000
+button. Hit send, it goes to the brain and
+
+47
+00:02:18,000 --> 00:02:19,503
+shows the reply.
+
+48
+00:02:19,853 --> 00:02:22,931
+Time to give Muse its toolkit — npm
+
+49
+00:02:22,931 --> 00:02:26,272
+install. In a moment, the packages are
+
+50
+00:02:26,272 --> 00:02:26,799
+added.
+
+51
+00:02:27,149 --> 00:02:30,523
+Finally, run it — npm run dev. When the
+
+52
+00:02:30,523 --> 00:02:33,723
+address appears, just open it in your
+
+53
+00:02:33,723 --> 00:02:34,415
+browser.
+
+54
+00:02:34,765 --> 00:02:39,268
+Run it, open the address, type 'Hi Muse'…
+
+55
+00:02:39,268 --> 00:02:43,880
+wait. Did you just see that? A program you
+
+56
+00:02:43,880 --> 00:02:48,492
+built a minute ago just spoke to you. This
+
+57
+00:02:48,492 --> 00:02:52,225
+isn't my app anymore — it's yours.
+
+58
+00:02:52,575 --> 00:02:55,328
+My favorite part — let's break it on
+
+59
+00:02:55,328 --> 00:02:58,081
+purpose. Remove the key and send: it
+
+60
+00:02:58,081 --> 00:03:01,216
+doesn't explode. Muse calmly asks for the
+
+61
+00:03:01,216 --> 00:03:04,121
+key. A developer isn't someone with no
+
+62
+00:03:04,121 --> 00:03:07,256
+errors — it's someone who got comfortable
+
+63
+00:03:07,256 --> 00:03:10,238
+with them. An error isn't failure; it's
+
+64
+00:03:10,238 --> 00:03:12,685
+the computer handing you a hint.
+
+65
+00:03:13,035 --> 00:03:16,664
+Before we close, say it in your own words:
+
+66
+00:03:16,664 --> 00:03:19,861
+my app sends a message to a model and
+
+67
+00:03:19,861 --> 00:03:23,316
+shows the reply. Yesterday you had no AI
+
+68
+00:03:23,316 --> 00:03:26,772
+app. Today you do. It doesn't have to be
+
+69
+00:03:26,772 --> 00:03:30,142
+perfect — you built one more thing than
+
+70
+00:03:30,142 --> 00:03:33,252
+yesterday. That's a developer's win.
+
+71
+00:03:33,602 --> 00:03:36,328
+But chat a while and you'll notice Muse
+
+72
+00:03:36,328 --> 00:03:39,124
+rambles. Next episode, we give it a soul
+
+73
+00:03:39,124 --> 00:03:42,060
+in basically one line. Subscribe, and tell
+
+74
+00:03:42,060 --> 00:03:44,716
+me in the comments: if your Muse could
+
+75
+00:03:44,716 --> 00:03:47,442
+take one job off your hands, what would
+
+76
+00:03:47,442 --> 00:03:49,819
+you give it first? See you in EP1.
+
