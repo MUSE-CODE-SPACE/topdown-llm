@@ -1,0 +1,17 @@
+{
+  "name": "topdown-llm",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Build a real AI assistant (Muse), top-down. Episode by episode.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  }
+}

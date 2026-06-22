@@ -39,6 +39,9 @@ Every episode is one commit on `main`, **tagged** so you can grab that exact poi
 | EP2 | [tree/ep2](https://github.com/MUSE-CODE-SPACE/topdown-llm/tree/ep2) | `git checkout ep2` | [EP2-handout](resources/EP2-handout.md) |
 | EP3 | [tree/ep3](https://github.com/MUSE-CODE-SPACE/topdown-llm/tree/ep3) | `git checkout ep3` | [EP3-handout](resources/EP3-handout.md) |
 
+**Git이 어렵다면** — 각 편 전체 코드가 폴더로도 있어요(다운로드/복사만 하면 끝):
+[episodes/ep0](episodes/ep0) · [ep1](episodes/ep1) · [ep2](episodes/ep2) · [ep3](episodes/ep3)
+
 `main` is always the latest episode. / `main`은 항상 최신 편.
 
 ## 📋 Don't retype — copy the code / 코드는 외우지 말고 복사하세요
