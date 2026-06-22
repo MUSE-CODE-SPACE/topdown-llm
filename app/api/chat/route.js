@@ -25,6 +25,26 @@ const MUSE_PERSONA =
   "Keep replies short and focused: 2 to 4 sentences, simple words, one friendly emoji. " +
   "If a question is vague, ask one quick clarifying question instead of guessing.";
 
+// EP3 — a tool Muse can actually call. (LLMs guess at math; a tool does it exactly.)
+const tools = [
+  {
+    name: "calc",
+    description: "Do exact arithmetic. Always use this for any math.",
+    input_schema: {
+      type: "object",
+      properties: { expression: { type: "string", description: "e.g. 1234 * 5678" } },
+      required: ["expression"],
+    },
+  },
+];
+
+// We run the tool ourselves — safely (numbers and + - * / ( ) only).
+function runCalc(expression) {
+  if (!/^[\d\s+\-*/().]+$/.test(expression)) return "invalid expression";
+  try { return String(Function(`"use strict"; return (${expression})`)()); }
+  catch { return "could not calculate"; }
+}
+
 export async function POST(req) {
   try {
     if (!process.env.ANTHROPIC_API_KEY) {
@@ -40,12 +60,29 @@ export async function POST(req) {
     const found = retrieve(lastUser, NOTES);
     const context = found.length ? `\n\nWhat you know about the user:\n- ${found.join("\n- ")}` : "";
 
-    const reply = await anthropic.messages.create({
+    // EP3 — tool-use loop: let Muse call a tool, run it, hand the result back, repeat.
+    const convo = [...messages];
+    let reply = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 1024,
       system: MUSE_PERSONA + context,
-      messages,
+      tools,
+      messages: convo,
     });
+
+    while (reply.stop_reason === "tool_use") {
+      const call = reply.content.find((b) => b.type === "tool_use");
+      const result = call.name === "calc" ? runCalc(call.input.expression) : "unknown tool";
+      convo.push({ role: "assistant", content: reply.content });
+      convo.push({ role: "user", content: [{ type: "tool_result", tool_use_id: call.id, content: result }] });
+      reply = await anthropic.messages.create({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1024,
+        system: MUSE_PERSONA + context,
+        tools,
+        messages: convo,
+      });
+    }
 
     const text = reply.content.map((b) => (b.type === "text" ? b.text : "")).join("");
     return Response.json({ text });
