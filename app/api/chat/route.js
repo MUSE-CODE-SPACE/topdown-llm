@@ -5,8 +5,19 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { NOTES } from "../../notes"; // EP2 — your notes
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs"; // EP4 — memory on disk
 
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
+
+// EP4 — memory: remember things across sessions by saving them to a small file.
+const MEM_FILE = process.cwd() + "/data/memory.json";
+function loadMemory() {
+  try { return JSON.parse(readFileSync(MEM_FILE, "utf8")); } catch { return []; }
+}
+function saveMemory(list) {
+  mkdirSync(process.cwd() + "/data", { recursive: true });
+  writeFileSync(MEM_FILE, JSON.stringify(list.slice(-30), null, 2)); // keep last 30
+}
 
 // EP2 — the tiny "retrieve" step of RAG: find the notes most related to the question.
 function retrieve(query, notes, k = 2) {
@@ -60,12 +71,17 @@ export async function POST(req) {
     const found = retrieve(lastUser, NOTES);
     const context = found.length ? `\n\nWhat you know about the user:\n- ${found.join("\n- ")}` : "";
 
+    // EP4 — memory: load what the user told us before, and remember this message for next time.
+    const memory = loadMemory();
+    const memText = memory.length ? `\n\nThings the user told you earlier:\n- ${memory.slice(-8).join("\n- ")}` : "";
+    if (lastUser) { memory.push(lastUser); saveMemory(memory); }
+
     // EP3 — tool-use loop: let Muse call a tool, run it, hand the result back, repeat.
     const convo = [...messages];
     let reply = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 1024,
-      system: MUSE_PERSONA + context,
+      system: MUSE_PERSONA + context + memText,
       tools,
       messages: convo,
     });
@@ -78,7 +94,7 @@ export async function POST(req) {
       reply = await anthropic.messages.create({
         model: "claude-sonnet-4-6",
         max_tokens: 1024,
-        system: MUSE_PERSONA + context,
+        system: MUSE_PERSONA + context + memText,
         tools,
         messages: convo,
       });
