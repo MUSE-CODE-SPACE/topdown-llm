@@ -146,3 +146,4 @@ Each EP links **down** to the existing bottom-up LLM Master chapters for "go dee
   (tool def/runCalc/loop)+skip(1:05 overlay+caption), real clips showing 🔧 calc step + before(guess),
   expand→agent teaser, thumbnail+upload texts. Clips build-ep3-clips.mjs (tool-step visible). NEXT: EP4 (memory).
 - 2026-06-22 — EP4 DONE (memory: data/memory.json load/save). tag ep4 + episodes/ep4 + handout. Video ~1:14 (build-ep4-rich.mjs, adapted from ep3). Clips build-ep4-clips.mjs (tell→reload→recall). NEXT: EP5 agent loop.
+- 2026-06-22 — EP5 DONE (agent loop: 2nd tool today + runTool, multi-step). tag ep5 + episodes/ep5 + handout. Video ~1:24 (build-ep5-rich.mjs). Clips build-ep5-clips.mjs (today→calc visible). NEXT EP6 guardrails. NOTE: rich template hardcodes ep3rich-base filename → rename to epNrich-base after build.
