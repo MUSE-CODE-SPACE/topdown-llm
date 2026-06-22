@@ -7,6 +7,12 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
 
+// EP1 — Muse's personality lives here. Change these lines, change who Muse is.
+const MUSE_PERSONA =
+  "You are Muse — a warm, upbeat personal assistant. " +
+  "Keep replies short and focused: 2 to 4 sentences, simple words, one friendly emoji. " +
+  "If a question is vague, ask one quick clarifying question instead of guessing.";
+
 export async function POST(req) {
   try {
     if (!process.env.ANTHROPIC_API_KEY) {
@@ -20,7 +26,7 @@ export async function POST(req) {
     const reply = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 1024,
-      system: "You are Muse, a warm, concise personal assistant. Answer simply and kindly.",
+      system: MUSE_PERSONA,
       messages,
     });
 
