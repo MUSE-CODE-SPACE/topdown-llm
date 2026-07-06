@@ -9,9 +9,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "latest",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "@anthropic-ai/sdk": "^0.105.0",
+    "next": "^16.2.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   }
 }
