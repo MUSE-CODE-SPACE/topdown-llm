@@ -1,6 +1,12 @@
 // 서버에서만 실행되는 코드예요. API 키가 브라우저로 넘어가지 않아요.
 import Anthropic from "@anthropic-ai/sdk";
-import { search } from "../../../lib/search-keyword";
+import { search as searchKeyword } from "../../../lib/search-keyword";
+import { search as searchEmbed } from "../../../lib/search-embed";
+
+// 환경변수 SEARCH_MODE 로 검색 방식을 골라요. (keyword 또는 embed, 기본은 embed)
+// 예: SEARCH_MODE=keyword npm run dev  → 단어가 겹치는 메모를 찾는 키워드 검색
+//     npm run dev                      → 뜻이 비슷한 메모를 찾는 임베딩 검색
+const search = process.env.SEARCH_MODE === "keyword" ? searchKeyword : searchEmbed;
 
 // .env.local 의 ANTHROPIC_API_KEY 를 자동으로 읽어요.
 const client = new Anthropic();
@@ -27,9 +33,9 @@ export async function POST(request) {
 
   // 가장 마지막 질문(사용자 메시지)으로 메모를 검색해요.
   const question = messages[messages.length - 1].content;
-  const notes = search(question);
 
   try {
+    const notes = await search(question); // 키워드 검색은 바로, 임베딩 검색은 Ollama 를 거쳐요
     const response = await client.messages.create({
       model: "claude-sonnet-5-5",
       max_tokens: 4096,
