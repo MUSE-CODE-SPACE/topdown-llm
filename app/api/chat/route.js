@@ -31,11 +31,19 @@ export async function POST(request) {
   // 화면에서 보낸 지금까지의 대화 전체
   const { messages } = await request.json();
 
-  // 가장 마지막 질문(사용자 메시지)으로 메모를 검색해요.
-  const question = messages[messages.length - 1].content;
+  // 지금 질문뿐 아니라 앞서 한 질문들로도 검색해서 메모를 모아요 (지금 질문 것이 맨 앞).
+  // 지금 질문으로만 찾으면 앞 대답의 근거 메모가 빠져서, 비서가 앞의 맞는 대답을
+  // "메모에 없다"며 취소하는 일이 생겨요.
+  const questions = messages
+    .filter((message) => message.role === "user")
+    .map((message) => message.content)
+    .reverse();
 
   try {
-    const notes = await search(question); // 키워드 검색은 바로, 임베딩 검색은 Ollama 를 거쳐요
+    // 키워드 검색은 바로, 임베딩 검색은 Ollama 를 거쳐요. 같은 파일은 한 번만 넣어요.
+    const found = (await Promise.all(questions.map((question) => search(question)))).flat();
+    const seen = new Set();
+    const notes = found.filter((note) => !seen.has(note.file) && seen.add(note.file));
     const response = await client.messages.create({
       model: "claude-sonnet-5-5",
       max_tokens: 4096,
