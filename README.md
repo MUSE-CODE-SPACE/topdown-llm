@@ -57,8 +57,9 @@ open them and hit the **Copy** button (top-right of each file on GitHub).
 초보자분들 — 긴 코드를 손으로 칠 필요 없어요. 매 에피소드의 *진짜* 파일이 여기 있으니
 열어서 우측 상단 **Copy** 버튼만 누르세요.
 
-**EP0 files / EP0 파일 (copy these 2):**
+**EP0 files / EP0 파일 (copy these):**
 - 🧠 brain / 두뇌 → [`app/api/chat/route.js`](app/api/chat/route.js)
+- 🧰 helpers it imports / 같이 복사할 도우미 → [`app/api/chat/lib.js`](app/api/chat/lib.js)
 - 💬 face / 얼굴 → [`app/page.js`](app/page.js)
 - 🎨 styles / 꾸미기 → [`app/globals.css`](app/globals.css)
 - 🔑 your key / 내 키 → make `.env.local`, copy from [`.env.example`](.env.example)
